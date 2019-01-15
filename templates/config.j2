@@ -26,7 +26,7 @@ set $key_ws2 2
 set $key_ws3 3
 set $key_ws4 4
 set $key_ws5 5
-set $key_next_to_tab a
+set $key_next_to_tab q
 set $key_next_to_l semicolon
 set $key_next_to_e w
 {% endif %}
@@ -198,11 +198,6 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% &&
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% && pkill -RTMIN+10 i3blocks && notify-send -t 1000 -i $ICON_AUDIO "Volume : `/usr/share/i3blocks/volume`" #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle && pkill -RTMIN+10 i3blocks && notify-send -t 1000 -i $ICON_AUDIO "Volume : `/usr/share/i3blocks/volume`" # mute sound
 
-# Pulse Audio controls
-#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% && pkill -RTMIN+10 i3blocks #increase sound volume
-#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% && pkill -RTMIN+10 i3blocks #decrease sound volume
-#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle && pkill -RTMIN+10 i3blocks # mute sound
-
 {% if i3_adjustable_brightness %}
 # Screen brightness controls
 exec --no-startup-id "light -cS 1"
@@ -222,6 +217,24 @@ bindsym XF86AudioPrev exec playerctl previous
 # Sleep & lock
 bindsym Shift+$mod+Insert exec "lock.sh"
 bindsym $mod+Shift+Delete exec "systemctl hibernate"
+
+{% if i3_adjustable_brightness %}
+# Quick n'dirty integration of laptop stuff
+# Keyboard layout
+exec --no-startup-id "setxkbmap -option 'compose:ralt'"
+
+# Touchpad
+exec --no-startup-id "synclient TapButton1=1 TapButton2=3 TapButton3=2 PalmDetect=1 AccelFactor=0.4 VertTwoFingerScroll=1 HorizTwoFingerScroll=1"
+
+# Network manager
+exec --no-startup-id "nm-applet"
+
+# Bluetooth manager
+exec --no-startup-id "blueman-applet"
+
+# Redshift
+exec --no-startup-id "redshift-gtk"
+{% endif %}
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)

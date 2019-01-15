@@ -11,6 +11,21 @@
     deb: "{{ i3_light_deb }}"
   when: i3_adjustable_brightness
 
+- name: Add udev rules
+  become: yes
+  copy:
+    src: files/90-backlight.conf
+    dest: /etc/udev/rules.d
+  when: i3_adjustable_brightness
+
+- name: Add user to video group
+  become: yes
+  user:
+    name: "{{ admin_user }}"
+    groups: video
+    append: yes
+  when: i3_adjustable_brightness
+
 - name: Install i3 config
   template:
     src: templates/config.j2
