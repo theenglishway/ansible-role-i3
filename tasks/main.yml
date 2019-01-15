@@ -29,8 +29,13 @@
     dest: /usr/local/bin/
     mode: 0755
 
-- name: Add lock image
+- name: Add images
   become: yes
   copy:
-    src: files/lock.png
+    src: files/{{ item }}
     dest: "{{ i3_images_dir }}"
+  loop:
+    - lock.png
+    - info.png
+    - audio.png
+    - clock.png

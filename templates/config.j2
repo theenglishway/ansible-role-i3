@@ -189,9 +189,9 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-set $ICON_BRIGHTNESS /usr/share/icons/mate/256x256/status/info.png
-set $ICON_AUDIO /usr/share/icons/mate/256x256/status/audio-volume-medium.png
-set $ICON_WARNING /usr/share/icons/mate/256x256/status/appointment-missed.png
+set $ICON_BRIGHTNESS {{ i3_images_dir }}/info.png
+set $ICON_AUDIO {{ i3_images_dir }}/audio.png
+set $ICON_WARNING {{ i3_images_dir }}/clock.png
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% && pkill -RTMIN+10 i3blocks && notify-send -t 1000 -i $ICON_AUDIO "Volume : `/usr/share/i3blocks/volume`" #increase sound volume
