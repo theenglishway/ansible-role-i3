@@ -2,4 +2,13 @@
 i3_packages:
   - i3
   - i3blocks
+  - notify-osd
+  - scrot
+  - imagemagick
+
 i3_font_size: 10
+i3_adjustable_brightness: false
+i3_light_version: 1.2
+i3_light_deb: https://github.com/haikarainen/light/releases/download/v{{ i3_light_version }}/light_{{ i3_light_version }}_amd64.deb
+
+i3_images_dir: /usr/share/i3_images

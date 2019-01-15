@@ -5,7 +5,32 @@
     name: "{{ i3_packages }}"
     state: present
 
+- name: Install i3 brightness adjustment
+  become: yes
+  apt:
+    deb: "{{ i3_light_deb }}"
+  when: i3_adjustable_brightness
+
 - name: Install i3 config
   template:
     src: templates/config.j2
     dest: ~/.config/i3/config
+
+- name: Create i3 images dir
+  become: yes
+  file:
+    dest: "{{ i3_images_dir }}"
+    state: directory
+
+- name: Add lock binary
+  become: yes
+  template:
+    src: templates/lock.sh
+    dest: /usr/local/bin/
+    mode: 0755
+
+- name: Add lock image
+  become: yes
+  copy:
+    src: files/lock.png
+    dest: "{{ i3_images_dir }}"
