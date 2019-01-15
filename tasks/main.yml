@@ -1,0 +1,11 @@
+---
+- name: Install i3 packages
+  become: yes
+  apt: 
+    name: "{{ i3_packages }}"
+    state: present
+
+- name: Install i3 config
+  template:
+    src: templates/config.j2
+    dest: ~/.config/i3/config

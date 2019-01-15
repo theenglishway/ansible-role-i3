@@ -1,0 +1,5 @@
+---
+i3_packages:
+  - i3
+  - i3blocks
+i3_font_size: 10
