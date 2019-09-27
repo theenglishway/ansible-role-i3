@@ -5,6 +5,7 @@ i3_packages:
   - notify-osd
   - scrot
   - imagemagick
+  - rofi
 
 i3_font_size: 10
 i3_adjustable_brightness: false

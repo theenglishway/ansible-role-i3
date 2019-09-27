@@ -59,7 +59,8 @@ bindsym $mod+Shift+Return exec xterm -class FXTerm -g 80x20+900+150
 bindsym $mod+Shift+$key_next_to_tab kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec --no-startup-id rofi -show run
+
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
