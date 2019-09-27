@@ -230,11 +230,11 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym Shift+$mod+Insert exec "lock.sh"
 bindsym $mod+Shift+Delete exec "systemctl hibernate"
 
-{% if i3_adjustable_brightness %}
-# Quick n'dirty integration of laptop stuff
 # Keyboard layout
-exec --no-startup-id "setxkbmap -option 'compose:ralt'"
+exec --no-startup-id "setxkbmap us -option 'compose:ralt'"
 
+# Quick n'dirty integration of laptop stuff
+{% if i3_adjustable_brightness %}
 # Touchpad
 exec --no-startup-id "synclient TapButton1=1 TapButton2=3 TapButton3=2 PalmDetect=1 AccelFactor=0.4 VertTwoFingerScroll=1 HorizTwoFingerScroll=1"
 
