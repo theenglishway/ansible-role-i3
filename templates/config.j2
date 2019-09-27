@@ -199,6 +199,17 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% &&
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% && pkill -RTMIN+10 i3blocks && notify-send -t 1000 -i $ICON_AUDIO "Volume : `/usr/share/i3blocks/volume`" #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle && pkill -RTMIN+10 i3blocks && notify-send -t 1000 -i $ICON_AUDIO "Volume : `/usr/share/i3blocks/volume`" # mute sound
 
+set $mode_media Adjust Sound and Brightness
+bindsym $mod+p mode "$mode_media"
+
+mode "$mode_media" {
+    bindsym k exec --no-startup-id pactl set-sink-volume 0 +5% && pkill -RTMIN+10 i3blocks && notify-send -t 1000 -i $ICON_AUDIO "Volume : `/usr/share/i3blocks/volume`" #increase sound volume
+    bindsym j exec --no-startup-id pactl set-sink-volume 0 -5% && pkill -RTMIN+10 i3blocks && notify-send -t 1000 -i $ICON_AUDIO "Volume : `/usr/share/i3blocks/volume`" #decrease sound volume
+    bindsym m exec --no-startup-id pactl set-sink-mute 0 toggle && pkill -RTMIN+10 i3blocks && notify-send -t 1000 -i $ICON_AUDIO "Volume : `/usr/share/i3blocks/volume`" # mute sound
+
+    bindsym Escape mode "default"
+}
+
 {% if i3_adjustable_brightness %}
 # Screen brightness controls
 exec --no-startup-id "light -cS 1"
