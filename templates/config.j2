@@ -31,8 +31,6 @@ set $key_next_to_l semicolon
 set $key_next_to_e w
 {% endif %}
 
-set $exec_i3_groups exec --no-startup-id i3-workspace-groups
-
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:monospace {{ i3_font_size }}
@@ -124,41 +122,35 @@ bindsym $mod+Ctrl+$key_ws1 scratchpad show
 # focus the child container
 #bindsym $mod+d focus child
 
-# Switch active workspace group
-bindsym $mod+g exec --no-startup-id i3-switch-active-workspace-group
-# Move workspace to another group
-bindsym $mod+Shift+g exec --no-startup-id i3-assign-workspace-to-group
-
 # switch to workspace
-bindsym $mod+$key_ws1 $exec_i3_groups workspace-number 1
-bindsym $mod+$key_ws2 $exec_i3_groups workspace-number 2
-bindsym $mod+$key_ws3 $exec_i3_groups workspace-number 3
-bindsym $mod+$key_ws4 $exec_i3_groups workspace-number 4
-bindsym $mod+$key_ws5 $exec_i3_groups workspace-number 5
+bindsym $mod+$key_ws1 workspace 1
+bindsym $mod+$key_ws2 workspace 2
+bindsym $mod+$key_ws3 workspace 3
+bindsym $mod+$key_ws4 workspace 4
+bindsym $mod+$key_ws5 workspace 5
 
-# switch to workspace
-bindsym $mod+Shift+$key_ws1 $exec_i3_groups workspace-number 6
-bindsym $mod+Shift+$key_ws2 $exec_i3_groups workspace-number 7
-bindsym $mod+Shift+$key_ws3 $exec_i3_groups workspace-number 8
-bindsym $mod+Shift+$key_ws4 $exec_i3_groups workspace-number 9
-bindsym $mod+Shift+$key_ws5 $exec_i3_groups workspace-number 10
+bindsym $mod+Shift+$key_ws1 workspace 6
+bindsym $mod+Shift+$key_ws2 workspace 7
+bindsym $mod+Shift+$key_ws3 workspace 8
+bindsym $mod+Shift+$key_ws4 workspace 9
+bindsym $mod+Shift+$key_ws5 workspace 10
 
 # move focused container to workspace
 set $mode_move Move window to workspace ...
 bindsym $mod+$key_next_to_tab mode "$mode_move"
 
 mode "$mode_move" {
-    bindsym $key_ws1 $exec_i3_groups move-to-number 1, mode "default"
-    bindsym $key_ws2 $exec_i3_groups move-to-number 2, mode "default"
-    bindsym $key_ws3 $exec_i3_groups move-to-number 3, mode "default"
-    bindsym $key_ws4 $exec_i3_groups move-to-number 4, mode "default"
-    bindsym $key_ws5 $exec_i3_groups move-to-number 5, mode "default"
+    bindsym $key_ws1 move container to workspace 1, mode "default"
+    bindsym $key_ws2 move container to workspace 2, mode "default"
+    bindsym $key_ws3 move container to workspace 3, mode "default"
+    bindsym $key_ws4 move container to workspace 4, mode "default"
+    bindsym $key_ws5 move container to workspace 5, mode "default"
 
-    bindsym Shift+$key_ws1 $exec_i3_groups move-to-number 6, mode "default"
-    bindsym Shift+$key_ws2 $exec_i3_groups move-to-number 7, mode "default"
-    bindsym Shift+$key_ws3 $exec_i3_groups move-to-number 8, mode "default"
-    bindsym Shift+$key_ws4 $exec_i3_groups move-to-number 9, mode "default"
-    bindsym Shift+$key_ws5 $exec_i3_groups move-to-number 10, mode "default"
+    bindsym Shift+$key_ws1 move container to workspace 6, mode "default"
+    bindsym Shift+$key_ws2 move container to workspace 7, mode "default"
+    bindsym Shift+$key_ws3 move container to workspace 8, mode "default"
+    bindsym Shift+$key_ws4 move container to workspace 9, mode "default"
+    bindsym Shift+$key_ws5 move container to workspace 10, mode "default"
 
     bindsym Escape mode "default"
 }

@@ -11,12 +11,6 @@
     deb: "{{ i3_light_deb }}"
   when: i3_adjustable_brightness
 
-- name: Install i3-workspace-groups
-  become: yes
-  pip:
-    executable: pip3
-    name: i3-workspace-groups
-
 - name: Add udev rules
   become: yes
   copy:
